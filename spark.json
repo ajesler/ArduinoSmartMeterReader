@@ -1,0 +1,7 @@
+{
+  "name": "SmartMeterReader",
+  "author": "aj esler <aj@esler.co.nz>",
+  "license": "MIT",
+  "version": "0.1",
+  "description": "Arduino library to read realtime usage from smart electricity meters"
+}
