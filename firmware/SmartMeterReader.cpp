@@ -1,5 +1,4 @@
 #include "SmartMeterReader.h"
-#include "Arduino.h"
 
 SmartMeterReader::SmartMeterReader(int pin) {
   _inputPin = pin;

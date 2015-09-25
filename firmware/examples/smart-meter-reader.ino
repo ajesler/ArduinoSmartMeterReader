@@ -1,3 +1,4 @@
+#include "Arduino.h"
 #include "SmartMeterReader.h"
 
 const int photoresistorPin = 3;
