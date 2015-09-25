@@ -5,7 +5,7 @@ Arduino/Photon library to read realtime usage from smart electricity meters
 Some smart meters have an LED that flashes to indicate how much electricity is currently being used.  
 The meter will be labelled like `1000 imp/kWh` (impressions per kWh). An impression is a flash of the LED. For the meter in the image below, 1000 flashes of the LED indicates that 1 kWh of power has been used. Not all meters are 1000 imp/kWh.
 
-[![smart meter face](docs/images/smart-meter-face.png)]
+![smart meter face](docs/images/smart-meter-face.png)
 
 ```
 current power use = seconds per hour / (seconds between flashes * impressions per kWh)
@@ -55,7 +55,7 @@ void loop() {
     digitalWrite(pulseLedPin, LOW);
   }
 
-  delay(100);
+  delay(50);
 }
 
 ```
@@ -66,9 +66,9 @@ void loop() {
 
 ## Documentation
 
-The [docs](docs/) directory has a circuit diagram for the project, along with a bill of materials.
+The [docs](docs/) directory has a circuit diagram for the project, along with a bill of materials.  
 
-In order to test your project without a smart meter, a linear [potentiometer](https://www.adafruit.com/products/562) can be used to make an LED flash faster or slower. See [test circuit](docs/TestCircuit.md) for a circuit diagram and a bill of materials.
+In order to test your project without a smart meter, a linear [potentiometer](https://www.adafruit.com/products/562) can be used to make an LED flash faster or slower. See [smart meter simulator](docs/SmartMeterSimulator.md) for a circuit diagram and a bill of materials. The examples directory has a [smart-meter-simulator.ino](examples/smart-meter-simulator.ino) sketch to run the simulator.
 
 ## Ideas for extension
 
