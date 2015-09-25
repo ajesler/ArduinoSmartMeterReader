@@ -7,6 +7,7 @@
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
 #endif
+#endif
 
 #define SECONDS_PER_HOUR 3600
 
