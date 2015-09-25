@@ -60,15 +60,15 @@ void loop() {
 
 ```
 
-[smart-meter-reader.ino](examples/smart-meter-reader.ino) provides a more comprehensive example of use.  
-[photon-live-update.ino](examples/photon-live-update.ino) shows how to get live updates of the readings over the internet.
+[smart-meter-reader.ino](firmware/examples/smart-meter-reader.ino) provides a more comprehensive example of use.  
+[photon-live-update.ino](firmware/examples/photon-live-update.ino) shows how to get live updates of the readings over the internet.
 
 
 ## Documentation
 
 The [docs](docs/) directory has a circuit diagram for the project, along with a bill of materials.  
 
-In order to test your project without a smart meter, a linear [potentiometer](https://www.adafruit.com/products/562) can be used to make an LED flash faster or slower. See [smart meter simulator](docs/SmartMeterSimulator.md) for a circuit diagram and a bill of materials. The examples directory has a [smart-meter-simulator.ino](examples/smart-meter-simulator.ino) sketch to run the simulator.
+In order to test your project without a smart meter, a linear [potentiometer](https://www.adafruit.com/products/562) can be used to make an LED flash faster or slower. See [smart meter simulator](docs/SmartMeterSimulator.md) for a circuit diagram and a bill of materials. The examples directory has a [smart-meter-simulator.ino](firmware/examples/smart-meter-simulator.ino) sketch to run the simulator.
 
 ## Ideas for extension
 
