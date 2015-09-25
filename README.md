@@ -66,7 +66,7 @@ void loop() {
 
 ## Documentation
 
-The [docs](docs/) directory has a circuit diagram for the project, along with a bill of materials.  
+A bill of materials and the circuit diagram are [here](docs/SmartMeterReader.md).
 
 In order to test your project without a smart meter, a linear [potentiometer](https://www.adafruit.com/products/562) can be used to make an LED flash faster or slower. See [smart meter simulator](docs/SmartMeterSimulator.md) for a circuit diagram and a bill of materials. The examples directory has a [smart-meter-simulator.ino](firmware/examples/smart-meter-simulator.ino) sketch to run the simulator.
 
