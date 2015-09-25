@@ -7,15 +7,13 @@ The flashing LED in this circuit is not required, but helps with ensuring your p
 
 ## Bill of Materials
 
-	* (1) Arduino
-	* (1) [Photo cell (CdS photoresistor)](https://www.adafruit.com/products/161)
-	* (1) 10KΩ resistor
-	* (1) LED, any colour
-	* (1) 220Ω resistor
-	* breadboard
-	* jumper wires
+* (1) Arduino
+* (1) [Photo cell (CdS photoresistor)](https://www.adafruit.com/products/161)
+* (1) 10KΩ resistor
+* (1) LED, any colour
+* (1) 220Ω resistor
 
 
 ## Circuit Diagram
 
-[![Smart meter reader circuit diagram](docs/images/smart_meter_reader_circuit_diagram.png)]
+[![smart meter reader circuit diagram](docs/images/smart-meter-reader-circuit-diagram.png)]

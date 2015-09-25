@@ -1,6 +1,6 @@
 # Dummy Meter
 
-This document shows how to make a circuit with an easily adjustable LED flashing rate. This is useful for testing your meter reader circuit without having to use an acutal smart meter. A second Arduino is required to run the dummy meter.
+This document shows how to make a circuit with an easily adjustable LED flashing rate. This is useful for testing your meter reader circuit without having to use an acutal smart meter. A second Arduino is required to run the meter simulator.
 
 
 ## Bill of Materials
@@ -13,6 +13,6 @@ This document shows how to make a circuit with an easily adjustable LED flashing
 
 ## Circuit Diagram
 
-[![LED flasher circuit diagram](docs/images/led_flasher_circuit_diagram.png)]
+[![smart meter simulator circuit diagram](docs/images/smart-meter-simulator-circuit-diagram.png)]
 
 [![example test setup](docs/images/example_test_setup.png)]

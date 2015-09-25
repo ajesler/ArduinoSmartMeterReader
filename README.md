@@ -5,7 +5,7 @@ Arduino/Photon library to read realtime usage from smart electricity meters
 Some smart meters have an LED that flashes to indicate how much electricity is currently being used.  
 The meter will be labelled like `1000 imp/kWh` (impressions per kWh). An impression is a flash of the LED. For the meter in the image below, 1000 flashes of the LED indicates that 1 kWh of power has been used. Not all meters are 1000 imp/kWh.
 
-[![Smart meter impressions led](docs/images/smart_meter_impressions_led.png)]
+[![smart meter face](docs/images/smart-meter-face.png)]
 
 ```
 current power use = seconds per hour / (seconds between flashes * impressions per kWh)
@@ -25,10 +25,43 @@ The library is designed to be driven by an interrupt on the photoresistor pin to
 
 ```c
 #include "SmartMeterReader.h"
+
+const int pulseLedPin = 4;
+const int photoresistorPin = 3;
+
+SmartMeterReader smartMeterReader(photoresistorPin);
+float reading;
+
+void recordFlashISR() {
+  smartMeterReader.recordFlash();
+}
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(pulseLedPin, OUTPUT);
+  attachInterrupt(digitalPinToInterrupt(photoresistorPin), recordFlashISR, RISING);
+}
+
+void loop() {
+  if (smartMeterReader.hasReading()) {
+    reading = smartMeterReader.reading();
+
+    Serial.print("Latest reading is ");
+    Serial.print(reading);
+    Serial.println(" kW");
+
+    digitalWrite(pulseLedPin, HIGH);
+    delay(10);
+    digitalWrite(pulseLedPin, LOW);
+  }
+
+  delay(100);
+}
+
 ```
 
-[SmartMeterReaderDemo.ino](examples/SmartMeterReaderDemo.ino) provides a more comprehensive example of use.  
-[PhotonLiveUpdateDemo.ino](examples/PhotonLiveUpdateDemo.ino) shows how to get live updates of the readings over the internet.
+[smart-meter-reader.ino](examples/smart-meter-reader.ino) provides a more comprehensive example of use.  
+[photon-live-update.ino](examples/photon-live-update.ino) shows how to get live updates of the readings over the internet.
 
 
 ## Documentation
