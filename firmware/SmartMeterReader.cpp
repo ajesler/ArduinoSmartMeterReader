@@ -24,7 +24,7 @@ bool SmartMeterReader::hasReading() {
 }
 
 float SmartMeterReader::reading() {
-  long delta = _endMillis - _startMillis; // disable interrupt here?
+  long delta = _endMillis - _startMillis;
   float flashesPerSecond = (float)delta / 1000;
   _latestReading = SECONDS_PER_HOUR / (flashesPerSecond * _impressionsPerkWh);
   _hasReading = false;
