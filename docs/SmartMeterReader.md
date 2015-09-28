@@ -16,4 +16,4 @@ The flashing LED in this circuit is not required, but helps with ensuring the re
 
 ## Circuit Diagram
 
-[![smart meter reader circuit diagram](images/smart-meter-reader-circuit-diagram.png)]
+![smart meter reader circuit diagram](images/smart-meter-reader-circuit-diagram.png)
