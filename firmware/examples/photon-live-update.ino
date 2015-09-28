@@ -3,7 +3,7 @@
 
 const int MIN_READING_GAP = 30; // upload a reading at most every 30 seconds.
 const int photoresistorPin = D3;
-const int pulseLedPin = D6;
+const int pulseLedPin = D7;
 
 SmartMeterReader smartMeterReader(photoresistorPin);
 float reading;
@@ -17,7 +17,7 @@ void recordFlashISR() {
 void uploadReading() {
     int now = Time.now();
     if (now - lastUploadTime > MIN_READING_GAP) {
-        Spark.publish("power-usage", stringReading);
+        Spark.publish("power-usage", stringReading, 60, PRIVATE);
         lastUploadTime = now;
     }
 }

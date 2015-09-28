@@ -1,0 +1,85 @@
+<html>
+<head>
+    <title>Live Power Usage Reading</title>
+</head>
+
+<body>
+  <div id="spark-login"></div>
+  <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+  <script src="https://cdn.jsdelivr.net/sparkjs/0.5.2/spark.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script>
+    var TOKEN = '<YOUR TOKEN HERE>';
+    var DEVICE_ID = '<YOUR DEVICE ID HERE>';
+    // once this limit is hit, the graph will remove the oldest point
+    // every time a new point is added
+    var MAX_DATA_POINTS_IN_GRAPH = 100;
+
+    Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
+    });
+
+    var chart = $('#container').highcharts({
+        chart: {
+            type: 'spline',
+            animation: Highcharts.svg, // don't animate in old IE
+            marginRight: 10
+        },
+        title: {
+            text: 'Live Power Usage'
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: 'kW'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                    Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                    Highcharts.numberFormat(this.y, 2)+ ' kW';
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        series: [{
+            name: 'Power Usage',
+            data: []
+        }]
+    }).highcharts();
+
+    spark.on('login', function() {
+        //Get test event for specific core
+        spark.getEventStream('power-usage', DEVICE_ID, function(data) {
+            console.log("Event: " + JSON.stringify(data));
+            // only update the graph if the data and published_at fields are present
+            if (data.data && data.published_at) {
+              var shift = chart.series[0].data.length >= MAX_DATA_POINTS_IN_GRAPH;
+              var x = Date.parse(data.published_at);
+              var y = parseFloat(data.data);
+              chart.series[0].addPoint([x, y], true, shift, true);
+            }
+        });
+    });
+    spark.login({ accessToken: TOKEN });
+  </script>
+</body>
+</html>

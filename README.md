@@ -57,11 +57,12 @@ void loop() {
 
   delay(50);
 }
-
 ```
 
-[smart-meter-reader.ino](firmware/examples/smart-meter-reader.ino) provides a more comprehensive example of use.  
-[photon-live-update.ino](firmware/examples/photon-live-update.ino) shows how to get live updates of the readings over the internet.
+[smart-meter-reader.ino](firmware/examples/smart-meter-reader.ino) contains the example shown above, with a few more comments.  
+
+[photon-live-update.ino](firmware/examples/photon-live-update.ino) shows how to get live updates of the readings over the internet using a [Particle Photon](https://store.particle.io/?product=particle-photon). This example has an accompanying [live graph](docs/live_readings.html) web page using [ParticleJS])(https://docs.particle.io/reference/javascript/) and [Highcharts](highcharts.com).   All you need to do is edit the file to set the `TOKEN` and `DEVICE_ID` variables in the top of the pages script section. Power usage events will also be logged to the console as they are received.  
+This library is available in the Particle web IDE as `SmartMeterReader`.
 
 
 ## Documentation
@@ -69,6 +70,7 @@ void loop() {
 A bill of materials and the circuit diagram are [here](docs/SmartMeterReader.md).
 
 In order to test your project without a smart meter, a linear [potentiometer](https://www.adafruit.com/products/562) can be used to make an LED flash faster or slower. See [smart meter simulator](docs/SmartMeterSimulator.md) for a circuit diagram and a bill of materials. The examples directory has a [smart-meter-simulator.ino](firmware/examples/smart-meter-simulator.ino) sketch to run the simulator.
+
 
 ## Ideas for extension
 
