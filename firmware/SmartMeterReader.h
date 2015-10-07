@@ -28,9 +28,9 @@ private:
   int _impressionsPerkWh;
 
   float _latestReading;
-  bool _hasReading;
-  long _startMillis;
-  long _endMillis;
+  volatile bool _hasReading;
+  volatile long _startMillis;
+  volatile long _endMillis;
 
 };
 

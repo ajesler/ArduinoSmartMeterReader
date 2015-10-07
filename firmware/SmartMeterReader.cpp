@@ -2,7 +2,8 @@
 
 SmartMeterReader::SmartMeterReader(int pin) {
   _inputPin = pin;
-  _impressionsPerkWh = 1000; // this should be configurable
+  _impressionsPerkWh = 1000;
+  _startMillis = 0;
 
   // set the pin mode
   pinMode(_inputPin, INPUT);
@@ -13,7 +14,7 @@ void SmartMeterReader::setImpressionsPerkWh(int impressions) {
 }
 
 void SmartMeterReader::recordFlash() {
-  _hasReading = _startMillis != 0;
+  _hasReading = _startMillis != 0 && _startMillis < _endMillis; // millis will overflow after ~50 days
 
   _startMillis = _endMillis;
   _endMillis = millis();
@@ -26,7 +27,8 @@ bool SmartMeterReader::hasReading() {
 float SmartMeterReader::reading() {
   long delta = _endMillis - _startMillis;
   float flashesPerSecond = (float)delta / 1000;
-  _latestReading = SECONDS_PER_HOUR / (flashesPerSecond * _impressionsPerkWh);
+  float skWh = flashesPerSecond * _impressionsPerkWh;
+  _latestReading = SECONDS_PER_HOUR / skWh;
   _hasReading = false;
 
   return _latestReading;
